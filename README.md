@@ -1,0 +1,1 @@
+# argocd-hub-spoke-eks
