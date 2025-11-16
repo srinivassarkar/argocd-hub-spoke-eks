@@ -5,17 +5,17 @@ metadata:
   namespace: argocd
 spec:
   generators:
-    - clusters:
-        selector:
-          matchLabels:
-            environment: spoke
+  - clusters:
+      selector:
+        matchLabels:
+          environment: spoke
   template:
     metadata:
-      name: '{{name}}-color-palette'
+      name: '{{nameNormalized}}-color-palette'
     spec:
       project: default
       source:
-        repoURL: 'https://github.com/SrinivasSarkar/argocd-hub-spoke-eks'   
+        repoURL: https://github.com/SrinivasSarkar/argocd-hub-spoke-eks
         targetRevision: main
         path: manifests/color-palette
       destination:
