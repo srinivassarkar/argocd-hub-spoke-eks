@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: color-palette
+spec:
+  replicas: 2
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: color-palette
+  template:
+    metadata:
+      labels:
+        app: color-palette
+    spec:
+      containers:
+      - name: color-palette
+        image: wizardxx7/color-palette:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+        envFrom:
+        - configMapRef:
+            name: color-palette-config
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+          limits:
+            cpu: "300m"
+            memory: "256Mi"
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 10
+          periodSeconds: 10
+

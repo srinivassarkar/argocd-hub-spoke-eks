@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: color-palette-config
+data:
+  APP_THEME: "dark"
+  DEFAULT_COLOR: "#3498db"
+
