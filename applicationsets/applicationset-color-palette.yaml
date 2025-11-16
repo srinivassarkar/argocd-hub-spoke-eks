@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: color-palette-appset
+  namespace: argocd
+spec:
+  generators:
+    - clusters:
+        selector:
+          matchLabels:
+            environment: spoke
+  template:
+    metadata:
+      name: '{{name}}-color-palette'
+    spec:
+      project: default
+      source:
+        repoURL: 'https://github.com/SrinivasSarkar/argocd-hub-spoke-eks'   
+        targetRevision: main
+        path: manifests/color-palette
+      destination:
+        server: '{{server}}'
+        namespace: default
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
