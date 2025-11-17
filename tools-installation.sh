@@ -70,6 +70,12 @@ install_if_missing "argocd" argocd '
   chmod +x /usr/local/bin/argocd
 '
 
+# 5. Helm (Helm 3)
+install_if_missing "Helm" helm '
+  curl -fsSL https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+'
+
+
 # Final output
 echo "All tools installed successfully!"
 echo "Versions:"
@@ -77,3 +83,4 @@ aws --version      | head -n1
 eksctl version     | head -n1 || true
 kubectl version --client --output=yaml | grep -E "gitVersion|gitCommit" || kubectl version --client
 argocd version --client 2>/dev/null || echo "argocd: installed (no version output in minimal env)"
+helm version
