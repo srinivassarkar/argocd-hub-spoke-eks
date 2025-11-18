@@ -11,24 +11,6 @@
 
 ---
 
-## 📋 Table of Contents
-
-- [Overview](#overview)
-- [Architecture](#architecture)
-- [Key Features](#key-features)
-- [Repository Structure](#repository-structure)
-- [Prerequisites](#prerequisites)
-- [Quick Start](#quick-start)
-- [Detailed Setup Guide](#detailed-setup-guide)
-- [Validation & Testing](#validation--testing)
-- [Troubleshooting](#troubleshooting)
-- [Cleanup](#cleanup)
-- [Technologies](#technologies)
-- [Contributing](#contributing)
-- [License](#license)
-
----
-
 ## 🎯 Overview
 
 This project implements a **hub-spoke topology** for managing multiple Kubernetes clusters using ArgoCD. The architecture centralizes GitOps operations in a single hub cluster while maintaining full control over multiple spoke clusters without requiring ArgoCD installation on each spoke.
